@@ -1,0 +1,10 @@
+{% extends 'base/site.html' %}
+{% block title %}{{app.name}} - Rounds{% endblock %}
+
+{% block page %}
+
+{% for round in rounds %}
+  {{dump(round)}}
+{% endfor %}
+
+{% endblock %}

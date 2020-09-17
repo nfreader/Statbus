@@ -11,7 +11,7 @@ use App\Domain\Rounds\Services\GetRoundListing as Rounds;
 final class RoundIndexAction extends ActionHandler
 {
 
-  protected $template = 'error/error.twig';
+  protected $template = 'rounds/index.twig';
 
   protected $twig;
 
@@ -23,7 +23,7 @@ final class RoundIndexAction extends ActionHandler
   }
 
   public function action(): Response {
-    return $this->respond($this->rounds->index());
+    return $this->respond(['rounds' => $this->rounds->index()]);
   }
 
 }
