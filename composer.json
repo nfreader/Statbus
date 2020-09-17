@@ -1,0 +1,14 @@
+{
+    "require": {
+        "slim/slim": "^4.5",
+        "slim/psr7": "^1.2",
+        "slim/twig-view": "^3.1",
+        "php-di/php-di": "^6.2",
+        "paragonie/easydb": "^2.11"
+    },
+    "autoload": { 
+      "psr-4": {
+          "App\\": "src"
+      }
+  }
+}
