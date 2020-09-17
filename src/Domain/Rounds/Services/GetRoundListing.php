@@ -14,7 +14,7 @@ class GetRoundListing
   }
 
   public function index($page = 1) {
-    return $this->repo->action();
+    return $this->repo->RoundListing($page);
   }
 
 }

@@ -11,9 +11,8 @@ class ExternalDB
     $this->DB = $db;
   }
 
-  protected function TablePrefix(){
-    $this->columns = str_replace('tbl_',$this->DB->prefix, $this->columns);
-    $this->table = str_replace('tbl_',$this->DB->prefix, $this->table);
+  protected function TablePrefix($query){
+    return str_replace('tbl_', $this->DB->prefix, $query);
   }
 
 }

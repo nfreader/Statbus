@@ -32,7 +32,6 @@ class RoundRepository extends ExternalDB
 
   public function __construct(DB $db){
     parent::__construct($db);
-    $this->TablePrefix();
   }
 
 }

@@ -6,8 +6,8 @@ use App\Domain\Rounds\Repository\RoundRepository as Repo;
 class SelectRounds extends Repo
 {
 
-  public function action($page = 1) {
-    var_dump($this->DB->run("SELECT * FROM $this->table LIMIT 0, 1000"));
+  public function RoundListing($page = 1) {
+    return $this->DB->run($this->TablePrefix("SELECT $this->columns FROM $this->table ORDER BY id DESC LIMIT 0, 60"));
   }
 
 }
