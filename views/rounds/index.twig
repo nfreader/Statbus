@@ -2,9 +2,47 @@
 {% block title %}{{app.name}} - Rounds{% endblock %}
 
 {% block page %}
-
-{% for round in rounds %}
-  {{dump(round)}}
-{% endfor %}
-
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Round ID</th>
+        <th>Mode</th>
+        <th>Result</th>
+        <th>Map</th>
+        <th>Server</th>
+        <th>Start</th>
+        <th>End</th>
+        <th>Duration</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for round in rounds %}
+      <tr class="table-{{round.class}}">
+        <td><a href="#round-{{round.id}}" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="round-{{round.id}}"><i class="fas fa-caret-right"></i></a> {{round.id}}</td>
+        <td>{{round.mode|title}}</td>
+        <td><i class="fas fa-{{round.icons.result}} fa-fw"></i> {{round.result|title ?: round.end_state|title}}</td>
+        <td>{{round.map}}</td>
+        <td>{{round.server.name}}</td>
+        <td>{{round.start}}</td>
+        <td>{{round.end}}</td>
+        <td>{{round.duration}}</td>
+      </tr>
+      <tr  id="round-{{round.id}}">
+        <td colspan="8">
+        {{dump(round)}}
+        {% if round.logs %}
+          <a class="btn btn-primary btn-sm" href="{{round.remote_logs_dir}}" target="_blank" rel="noopener noreferrer">Original <i class="fas fa-external-link-alt"></i></a>
+          {% if user.canAccessTGDB %}
+            <a class="btn btn-primary btn-sm" href="{{round.admin_logs_dir}}" target="_blank" rel="noopener noreferrer">Original <i class="fas fa-external-link-alt"></i></a>
+          {% endif %}
+          {% include 'rounds/html/extraLinks.tpl' ignore missing %}
+        {% else %}
+        <em>Not available</em>
+        {% endif %}
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+    <tfoot></tfoot>
+  </table>
 {% endblock %}
