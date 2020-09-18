@@ -68,6 +68,10 @@ return [
     return $twig;
 
   },
+  
+  'view' => static function(Container $container){
+    return $container->get(Twig::class);
+  },
 
   EasyDB::class => function (ContainerInterface $container){
     $config = (array) $container->get('settings')['database'];
